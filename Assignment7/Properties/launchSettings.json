@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Assignment7 (Package)": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": false
+    }
+  }
+}
