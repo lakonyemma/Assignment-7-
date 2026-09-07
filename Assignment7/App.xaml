@@ -5,14 +5,46 @@
     RequestedTheme="Light">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Default">
-                    <SolidColorBrush x:Key="SaccoBlueBrush" Color="#123B63" />
-                    <SolidColorBrush x:Key="SaccoGoldBrush" Color="#F2B233" />
-                    <SolidColorBrush x:Key="PageBackgroundBrush" Color="#F4F7FA" />
-                    <SolidColorBrush x:Key="CardBackgroundBrush" Color="#FFFFFF" />
-                </ResourceDictionary>
-            </ResourceDictionary.ThemeDictionaries>
+            <SolidColorBrush x:Key="SaccoBlueBrush" Color="#17365D" />
+            <SolidColorBrush x:Key="SaccoBlueDarkBrush" Color="#102A49" />
+            <SolidColorBrush x:Key="SaccoRedBrush" Color="#D82C2C" />
+            <SolidColorBrush x:Key="SaccoGoldBrush" Color="#E9B949" />
+            <SolidColorBrush x:Key="SaccoSkyBrush" Color="#4F86C6" />
+            <SolidColorBrush x:Key="PageBackgroundBrush" Color="#F3F4F6" />
+            <SolidColorBrush x:Key="CardBackgroundBrush" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="TextPrimaryBrush" Color="#18212B" />
+            <SolidColorBrush x:Key="TextSecondaryBrush" Color="#687481" />
+            <SolidColorBrush x:Key="LineBrush" Color="#D8DDE3" />
+
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource SaccoBlueBrush}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="Height" Value="44" />
+                <Setter Property="Padding" Value="20,0" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="CornerRadius" Value="0" />
+            </Style>
+
+            <Style x:Key="DashboardActionButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="#E4E7EB" />
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Height" Value="38" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                <Setter Property="Padding" Value="14,0" />
+                <Setter Property="Margin" Value="0,0,0,8" />
+                <Setter Property="CornerRadius" Value="0" />
+            </Style>
+
+            <Style x:Key="SectionLabelStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="11" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="CharacterSpacing" Value="70" />
+                <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
