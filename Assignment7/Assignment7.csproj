@@ -33,7 +33,6 @@
     <Compile Include="HomePage.xaml.cs"><DependentUpon>HomePage.xaml</DependentUpon></Compile>
     <Compile Include="LoginPage.xaml.cs"><DependentUpon>LoginPage.xaml</DependentUpon></Compile>
     <Compile Include="Models\Staff.cs" />
-    <Page Include="App.xaml"><Generator>MSBuild:Compile</Generator></Page>
     <Page Include="HomePage.xaml"><Generator>MSBuild:Compile</Generator></Page>
     <Page Include="LoginPage.xaml"><Generator>MSBuild:Compile</Generator></Page>
     <ApplicationDefinition Include="App.xaml"><Generator>MSBuild:Compile</Generator></ApplicationDefinition>
