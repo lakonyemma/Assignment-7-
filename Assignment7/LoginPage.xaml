@@ -1,0 +1,49 @@
+<Page
+    x:Class="Assignment7.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="{ThemeResource PageBackgroundBrush}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.15*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="#123B63">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="430">
+                <Ellipse Width="96" Height="96" Fill="#F2B233" HorizontalAlignment="Center">
+                    <Ellipse.Resources>
+                        <Style TargetType="Ellipse" />
+                    </Ellipse.Resources>
+                </Ellipse>
+                <TextBlock Text="UNITY SACCO" Foreground="White" FontSize="34" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,28,0,8" />
+                <TextBlock Text="STAFF MANAGEMENT PORTAL" Foreground="#DCE9F5" FontSize="16" CharacterSpacing="90" HorizontalAlignment="Center" />
+                <TextBlock Text="Secure access for authorised SACCO staff" Foreground="#B9CCE0" FontSize="15" TextAlignment="Center" TextWrapping="Wrap" Margin="0,30,0,0" />
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <Grid Padding="58,50">
+                <StackPanel MaxWidth="420" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Welcome back" FontSize="34" FontWeight="SemiBold" Foreground="#172B3A" />
+                    <TextBlock Text="Sign in to continue to your SACCO dashboard." FontSize="16" Foreground="#647482" Margin="0,8,0,34" TextWrapping="Wrap" />
+
+                    <TextBlock Text="EMAIL ADDRESS" FontSize="12" FontWeight="SemiBold" Foreground="#52616D" />
+                    <TextBox x:Name="EmailTextBox" PlaceholderText="staff@example.com" Height="48" Margin="0,8,0,22" Padding="12" />
+
+                    <TextBlock Text="PASSWORD" FontSize="12" FontWeight="SemiBold" Foreground="#52616D" />
+                    <PasswordBox x:Name="PasswordBox" PlaceholderText="Enter your password" Height="48" Margin="0,8,0,8" Padding="12" />
+
+                    <TextBlock x:Name="ErrorTextBlock" Foreground="#C62828" FontSize="13" TextWrapping="Wrap" Margin="0,4,0,14" Visibility="Collapsed" />
+
+                    <Button x:Name="LoginButton" Content="SIGN IN" Height="50" Background="#123B63" Foreground="White" FontSize="15" FontWeight="SemiBold" Click="LoginButton_Click" />
+                    <ProgressRing x:Name="LoginProgress" IsActive="False" Width="28" Height="28" HorizontalAlignment="Center" Margin="0,18,0,0" />
+
+                    <Border Background="#EEF3F7" CornerRadius="8" Padding="16" Margin="0,34,0,0">
+                        <TextBlock Text="Your credentials are checked securely against the SACCO SQL Server database." Foreground="#52616D" FontSize="13" TextWrapping="Wrap" />
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>
