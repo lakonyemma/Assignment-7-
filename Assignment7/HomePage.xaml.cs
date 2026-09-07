@@ -1,4 +1,3 @@
-using System;
 using Assignment7.Models;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -23,7 +22,7 @@ namespace Assignment7
             if (_loggedInStaff != null)
             {
                 WelcomeText.Text = $"Welcome, {_loggedInStaff.FullName}";
-                RoleText.Text = $"Signed in as {_loggedInStaff.Role} | {_loggedInStaff.Email}";
+                RoleText.Text = $"{_loggedInStaff.Role}  |  {_loggedInStaff.Email}";
             }
         }
 
@@ -32,27 +31,36 @@ namespace Assignment7
             DashboardHub.ScrollToSection(DashboardHub.Sections[0]);
         }
 
-        private async void MembersButton_Click(object sender, RoutedEventArgs e)
-        {
-            await ShowMessageAsync("Members", "Member management is available to authorised SACCO staff.");
-        }
-
-        private async void AccountsButton_Click(object sender, RoutedEventArgs e)
-        {
-            await ShowMessageAsync("Accounts", "Account management is available to authorised SACCO staff.");
-        }
-
-        private async void InfoButton_Click(object sender, RoutedEventArgs e)
+        private void MembersButton_Click(object sender, RoutedEventArgs e)
         {
             DashboardHub.ScrollToSection(DashboardHub.Sections[1]);
         }
 
-        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        private void AccountsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Frame.CanGoBack)
-                Frame.GoBack();
-            else
-                Frame.Navigate(typeof(LoginPage));
+            DashboardHub.ScrollToSection(DashboardHub.Sections[2]);
+        }
+
+        private async void ServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            string action = button?.Tag as string ?? "Service";
+            await ShowMessageAsync(action, $"{action} selected. This action is available to authorised SACCO staff.");
+        }
+
+        private async void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            string report = button?.Tag as string ?? "Report";
+            await ShowMessageAsync(report, $"{report} is ready for authorised staff review.");
+        }
+
+        private async void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            await ShowMessageAsync("Logout", "You have successfully logged out.");
+
+            Frame.Navigate(typeof(LoginPage));
+            Frame.BackStack.Clear();
         }
 
         private async System.Threading.Tasks.Task ShowMessageAsync(string title, string message)
