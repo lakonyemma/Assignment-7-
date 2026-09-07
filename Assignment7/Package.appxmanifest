@@ -2,7 +2,7 @@
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap">
   <Identity Name="Assignment7" Publisher="CN=Assignment7" Version="1.0.0.0" />
   <Properties>
-    <DisplayName>Unity SACCO Staff Portal</DisplayName>
+    <DisplayName>Kampala Community SACCO Staff Portal</DisplayName>
     <PublisherDisplayName>Assignment 7</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -14,7 +14,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Assignment7.App">
-      <uap:VisualElements AppListEntry="none" DisplayName="Unity SACCO Staff Portal" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="SACCO staff management portal">
+      <uap:VisualElements AppListEntry="none" DisplayName="Kampala Community SACCO Staff Portal" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Kampala Community SACCO staff management portal">
         <uap:DefaultTile Square71x71Logo="Assets\Square71x71Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" />
       </uap:VisualElements>
     </Application>
