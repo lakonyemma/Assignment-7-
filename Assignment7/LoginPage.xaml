@@ -2,48 +2,82 @@
     x:Class="Assignment7.LoginPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Background="{ThemeResource PageBackgroundBrush}">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.15*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
+    Background="{StaticResource PageBackgroundBrush}">
 
-        <Grid Grid.Column="0" Background="#123B63">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="430">
-                <Ellipse Width="96" Height="96" Fill="#F2B233" HorizontalAlignment="Center">
-                    <Ellipse.Resources>
-                        <Style TargetType="Ellipse" />
-                    </Ellipse.Resources>
-                </Ellipse>
-                <TextBlock Text="UNITY SACCO" Foreground="White" FontSize="34" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,28,0,8" />
-                <TextBlock Text="STAFF MANAGEMENT PORTAL" Foreground="#DCE9F5" FontSize="16" CharacterSpacing="90" HorizontalAlignment="Center" />
-                <TextBlock Text="Secure access for authorised SACCO staff" Foreground="#B9CCE0" FontSize="15" TextAlignment="Center" TextWrapping="Wrap" Margin="0,30,0,0" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="44" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource SaccoBlueDarkBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="72" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Fill="{StaticResource SaccoRedBrush}" />
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="KAMPALA COMMUNITY SACCO" Foreground="White" FontSize="16" FontWeight="Bold" CharacterSpacing="90" />
+                <TextBlock Text="STAFF MANAGEMENT PORTAL" Foreground="#C9D6E5" FontSize="10" CharacterSpacing="130" HorizontalAlignment="Center" Margin="0,4,0,0" />
             </StackPanel>
+            <Rectangle Grid.Column="2" Width="24" Height="24" Fill="{StaticResource SaccoGoldBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Grid>
 
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <Grid Padding="58,50">
-                <StackPanel MaxWidth="420" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Welcome back" FontSize="34" FontWeight="SemiBold" Foreground="#172B3A" />
-                    <TextBlock Text="Sign in to continue to your SACCO dashboard." FontSize="16" Foreground="#647482" Margin="0,8,0,34" TextWrapping="Wrap" />
+        <Grid Grid.Row="1" Background="{StaticResource PageBackgroundBrush}">
+            <Canvas IsHitTestVisible="False" Opacity="0.18">
+                <Ellipse Width="150" Height="150" Fill="{StaticResource SaccoGoldBrush}" Canvas.Left="32" Canvas.Top="38" />
+                <Rectangle Width="112" Height="112" Fill="{StaticResource SaccoSkyBrush}" Canvas.Left="118" Canvas.Top="118" />
+                <Rectangle Width="34" Height="190" Fill="{StaticResource SaccoRedBrush}" Canvas.Left="260" Canvas.Top="30" />
+            </Canvas>
 
-                    <TextBlock Text="EMAIL ADDRESS" FontSize="12" FontWeight="SemiBold" Foreground="#52616D" />
-                    <TextBox x:Name="EmailTextBox" PlaceholderText="staff@example.com" Height="48" Margin="0,8,0,22" Padding="12" />
+            <Border Width="390" Background="White" BorderBrush="#BAC5D1" BorderThickness="1" Padding="34,30,34,26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Transitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition FromVerticalOffset="32" IsStaggeringEnabled="False" />
+                    </TransitionCollection>
+                </Border.Transitions>
+                <StackPanel>
+                    <Grid Height="8" Margin="0,0,0,24">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Grid.Column="0" Fill="{StaticResource SaccoBlueBrush}" />
+                        <Rectangle Grid.Column="1" Fill="{StaticResource SaccoRedBrush}" />
+                        <Rectangle Grid.Column="2" Fill="{StaticResource SaccoGoldBrush}" />
+                    </Grid>
 
-                    <TextBlock Text="PASSWORD" FontSize="12" FontWeight="SemiBold" Foreground="#52616D" />
-                    <PasswordBox x:Name="PasswordBox" PlaceholderText="Enter your password" Height="48" Margin="0,8,0,8" Padding="12" />
+                    <TextBlock Text="STAFF LOGIN" FontSize="24" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" />
+                    <TextBlock Text="Authorised personnel only" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,5,0,26" />
 
-                    <TextBlock x:Name="ErrorTextBlock" Foreground="#C62828" FontSize="13" TextWrapping="Wrap" Margin="0,4,0,14" Visibility="Collapsed" />
+                    <TextBlock Text="EMAIL ADDRESS" Style="{StaticResource SectionLabelStyle}" />
+                    <TextBox x:Name="EmailTextBox" PlaceholderText="staff@kampalasacco.ug" Height="44" Margin="0,7,0,18" Padding="11,8" BorderBrush="#AEB8C2" BorderThickness="1" />
 
-                    <Button x:Name="LoginButton" Content="SIGN IN" Height="50" Background="#123B63" Foreground="White" FontSize="15" FontWeight="SemiBold" Click="LoginButton_Click" />
-                    <ProgressRing x:Name="LoginProgress" IsActive="False" Width="28" Height="28" HorizontalAlignment="Center" Margin="0,18,0,0" />
+                    <TextBlock Text="PASSWORD" Style="{StaticResource SectionLabelStyle}" />
+                    <PasswordBox x:Name="PasswordBox" PlaceholderText="Enter password" Height="44" Margin="0,7,0,8" Padding="11,8" BorderBrush="#AEB8C2" BorderThickness="1" />
 
-                    <Border Background="#EEF3F7" CornerRadius="8" Padding="16" Margin="0,34,0,0">
-                        <TextBlock Text="Your credentials are checked securely against the SACCO SQL Server database." Foreground="#52616D" FontSize="13" TextWrapping="Wrap" />
-                    </Border>
+                    <TextBlock x:Name="ErrorTextBlock" Foreground="{StaticResource SaccoRedBrush}" FontSize="12" TextWrapping="Wrap" Margin="0,5,0,13" Visibility="Collapsed" />
+
+                    <Button x:Name="LoginButton" Content="LOGIN" Style="{StaticResource PrimaryButtonStyle}" Click="LoginButton_Click" />
+                    <ProgressRing x:Name="LoginProgress" IsActive="False" Width="24" Height="24" HorizontalAlignment="Center" Margin="0,14,0,0" />
+
+                    <Grid Margin="0,22,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="8" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Fill="{StaticResource SaccoGoldBrush}" />
+                        <TextBlock Grid.Column="1" Text="SQL Server secured staff authentication" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" Margin="10,0,0,0" VerticalAlignment="Center" />
+                    </Grid>
                 </StackPanel>
-            </Grid>
-        </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="2" Background="#ECEFF2">
+            <TextBlock Text="Kampala Community SACCO © 2026" FontSize="10" Foreground="#7A848E" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
     </Grid>
 </Page>
