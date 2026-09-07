@@ -5,15 +5,15 @@
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
     <RootNamespace>Assignment7</RootNamespace>
     <AssemblyName>Assignment7</AssemblyName>
+
     <UseUwp>true</UseUwp>
+    <UseUwpTools>true</UseUwpTools>
     <EnableMsixTooling>true</EnableMsixTooling>
     <PublishAot>true</PublishAot>
     <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
+
     <Platforms>x86;x64;ARM64</Platforms>
-    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <ApplicationManifest>Package.appxmanifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
