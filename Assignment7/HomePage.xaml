@@ -5,118 +5,192 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource PageBackgroundBrush}">
+    Background="{StaticResource PageBackgroundBrush}">
 
     <Page.TopAppBar>
-        <CommandBar Background="{ThemeResource SaccoBlueBrush}" Foreground="White" DefaultLabelPosition="Right">
+        <CommandBar Background="{StaticResource SaccoBlueDarkBrush}" Foreground="White" DefaultLabelPosition="Right">
             <CommandBar.Content>
-                <TextBlock Text="UNITY SACCO" FontSize="21" FontWeight="Bold" VerticalAlignment="Center" Margin="20,0,24,0" />
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0,20,0">
+                    <Rectangle Width="10" Height="30" Fill="{StaticResource SaccoRedBrush}" Margin="0,0,12,0" />
+                    <StackPanel>
+                        <TextBlock Text="KAMPALA COMMUNITY SACCO" FontSize="16" FontWeight="Bold" CharacterSpacing="70" />
+                        <TextBlock Text="STAFF MANAGEMENT PORTAL" FontSize="9" Foreground="#C9D6E5" CharacterSpacing="90" />
+                    </StackPanel>
+                </StackPanel>
             </CommandBar.Content>
             <AppBarButton Icon="Home" Label="Dashboard" Click="DashboardButton_Click" />
             <AppBarButton Icon="Contact" Label="Members" Click="MembersButton_Click" />
             <AppBarButton Icon="Money" Label="Accounts" Click="AccountsButton_Click" />
             <AppBarSeparator />
-            <AppBarButton Icon="LeaveChat" Label="Sign out" Click="LogoutButton_Click" />
+            <AppBarButton Icon="LeaveChat" Label="Logout" Click="LogoutButton_Click" />
         </CommandBar>
     </Page.TopAppBar>
 
-    <Grid Padding="24,20,24,30">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="0,0,0,10">
-            <TextBlock x:Name="WelcomeText" Text="Welcome" FontSize="30" FontWeight="SemiBold" Foreground="#172B3A" />
-            <TextBlock x:Name="RoleText" Text="Staff dashboard" FontSize="15" Foreground="#647482" Margin="0,5,0,0" />
-        </StackPanel>
+        <Grid Grid.Row="0" Background="White" Padding="24,18,24,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Text="SACCO Management Dashboard" FontSize="27" FontWeight="Light" Foreground="{StaticResource TextPrimaryBrush}" />
+                <TextBlock x:Name="WelcomeText" Text="Welcome" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource SaccoBlueBrush}" Margin="0,7,0,0" />
+                <TextBlock x:Name="RoleText" Text="Staff dashboard" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,3,0,0" />
+            </StackPanel>
+            <Canvas Grid.Column="1" Width="128" Height="58" Margin="20,0,0,0" IsHitTestVisible="False">
+                <Ellipse Width="42" Height="42" Fill="{StaticResource SaccoGoldBrush}" Canvas.Left="0" Canvas.Top="8" />
+                <Rectangle Width="42" Height="42" Fill="{StaticResource SaccoSkyBrush}" Canvas.Left="34" Canvas.Top="8" />
+                <Rectangle Width="12" Height="58" Fill="{StaticResource SaccoRedBrush}" Canvas.Left="86" Canvas.Top="0" />
+                <Line X1="104" Y1="29" X2="128" Y2="29" Stroke="{StaticResource SaccoBlueDarkBrush}" StrokeThickness="5" />
+            </Canvas>
+        </Grid>
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <Hub x:Name="DashboardHub">
-                <HubSection Header="OVERVIEW" IsHeaderInteractive="False">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Hub x:Name="DashboardHub" Margin="0,0,0,28">
+                <Hub.Transitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition FromHorizontalOffset="48" IsStaggeringEnabled="True" />
+                    </TransitionCollection>
+                </Hub.Transitions>
+
+                <HubSection Header="OVERVIEW" Width="520" IsHeaderInteractive="False">
                     <DataTemplate>
-                        <Grid MaxWidth="1200">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="260" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0" ColumnSpacing="16">
+                        <StackPanel>
+                            <TextBlock Text="SACCO OVERVIEW" Style="{StaticResource SectionLabelStyle}" Margin="0,0,0,12" />
+                            <Grid Height="142" ColumnSpacing="10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Border Grid.Column="0" Background="White" CornerRadius="10" Padding="22">
+                                <Border Grid.Column="0" Background="{StaticResource SaccoSkyBrush}" Padding="14">
                                     <StackPanel>
-                                        <TextBlock Text="TOTAL MEMBERS" FontSize="12" FontWeight="SemiBold" Foreground="#647482" />
-                                        <TextBlock Text="1,248" FontSize="34" FontWeight="Bold" Foreground="#123B63" Margin="0,12,0,0" />
-                                        <TextBlock Text="Active SACCO members" FontSize="13" Foreground="#647482" Margin="0,5,0,0" />
+                                        <TextBlock Text="TOTAL MEMBERS" Foreground="#EAF2FB" FontSize="9" FontWeight="SemiBold" />
+                                        <TextBlock Text="1,250" Foreground="White" FontSize="28" FontWeight="Bold" Margin="0,8,0,0" />
+                                        <Rectangle Height="4" Fill="White" Opacity="0.6" Margin="0,11,34,0" />
                                     </StackPanel>
                                 </Border>
 
-                                <Border Grid.Column="1" Background="White" CornerRadius="10" Padding="22">
+                                <Border Grid.Column="1" Background="#7890B3" Padding="14">
                                     <StackPanel>
-                                        <TextBlock Text="TOTAL SAVINGS" FontSize="12" FontWeight="SemiBold" Foreground="#647482" />
-                                        <TextBlock Text="UGX 684.5M" FontSize="30" FontWeight="Bold" Foreground="#123B63" Margin="0,12,0,0" />
-                                        <TextBlock Text="Current savings balance" FontSize="13" Foreground="#647482" Margin="0,5,0,0" />
+                                        <TextBlock Text="ACTIVE LOANS" Foreground="#EEF3F9" FontSize="9" FontWeight="SemiBold" />
+                                        <TextBlock Text="286" Foreground="White" FontSize="28" FontWeight="Bold" Margin="0,8,0,0" />
+                                        <Ellipse Width="24" Height="24" Fill="#E8EEF6" Opacity="0.7" HorizontalAlignment="Left" Margin="0,9,0,0" />
                                     </StackPanel>
                                 </Border>
 
-                                <Border Grid.Column="2" Background="White" CornerRadius="10" Padding="22">
+                                <Border Grid.Column="2" Background="{StaticResource SaccoGoldBrush}" Padding="14">
                                     <StackPanel>
-                                        <TextBlock Text="ACTIVE LOANS" FontSize="12" FontWeight="SemiBold" Foreground="#647482" />
-                                        <TextBlock Text="UGX 312.8M" FontSize="30" FontWeight="Bold" Foreground="#123B63" Margin="0,12,0,0" />
-                                        <TextBlock Text="Outstanding loan portfolio" FontSize="13" Foreground="#647482" Margin="0,5,0,0" />
+                                        <TextBlock Text="TOTAL SAVINGS" Foreground="#5C4610" FontSize="9" FontWeight="SemiBold" />
+                                        <TextBlock Text="UGX 4.8M" Foreground="#3E3210" FontSize="23" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <Rectangle Width="28" Height="28" Fill="#FFF7D6" HorizontalAlignment="Left" Margin="0,8,0,0" />
                                     </StackPanel>
                                 </Border>
                             </Grid>
 
-                            <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="20" Margin="0,18,0,0">
-                                <StackPanel>
-                                    <TextBlock Text="Quick actions" FontSize="19" FontWeight="SemiBold" Foreground="#172B3A" />
-                                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
-                                        <Button Content="View members" Click="MembersButton_Click" Margin="0,0,12,0" />
-                                        <Button Content="View accounts" Click="AccountsButton_Click" Margin="0,0,12,0" />
-                                        <Button Content="SACCO information" Click="InfoButton_Click" />
-                                    </StackPanel>
+                            <Grid Margin="0,16,0,0" ColumnSpacing="18">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Member Savings" FontSize="10" Foreground="{StaticResource TextSecondaryBrush}" />
+                                    <TextBlock Text="UGX 48.5M" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource SaccoSkyBrush}" Margin="0,4,0,0" />
                                 </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="Loans Issued" FontSize="10" Foreground="{StaticResource TextSecondaryBrush}" />
+                                    <TextBlock Text="UGX 32.8M" FontSize="14" FontWeight="SemiBold" Foreground="#7890B3" Margin="0,4,0,0" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="Pending Loans" FontSize="10" Foreground="{StaticResource TextSecondaryBrush}" />
+                                    <TextBlock Text="18" FontSize="14" FontWeight="SemiBold" Foreground="#A47D18" Margin="0,4,0,0" />
+                                </StackPanel>
+                            </Grid>
+
+                            <Border Background="White" BorderBrush="{StaticResource LineBrush}" BorderThickness="1" Margin="0,22,0,0" Padding="16">
+                                <Canvas Height="155">
+                                    <TextBlock Text="MEMBER ACTIVITY" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource TextSecondaryBrush}" Canvas.Left="0" Canvas.Top="0" />
+                                    <Line X1="8" Y1="125" X2="445" Y2="125" Stroke="#CDD4DB" StrokeThickness="1" />
+                                    <Rectangle Width="52" Height="50" Fill="{StaticResource SaccoSkyBrush}" Canvas.Left="26" Canvas.Top="75" />
+                                    <Rectangle Width="52" Height="82" Fill="#7890B3" Canvas.Left="106" Canvas.Top="43" />
+                                    <Rectangle Width="52" Height="62" Fill="{StaticResource SaccoGoldBrush}" Canvas.Left="186" Canvas.Top="63" />
+                                    <Rectangle Width="52" Height="99" Fill="{StaticResource SaccoBlueBrush}" Canvas.Left="266" Canvas.Top="26" />
+                                    <Rectangle Width="52" Height="72" Fill="{StaticResource SaccoRedBrush}" Canvas.Left="346" Canvas.Top="53" />
+                                </Canvas>
                             </Border>
-                        </Grid>
+                        </StackPanel>
                     </DataTemplate>
                 </HubSection>
 
-                <HubSection Header="SACCO INFORMATION" IsHeaderInteractive="False">
+                <HubSection Header="MEMBER SERVICES" Width="285" IsHeaderInteractive="False">
                     <DataTemplate>
-                        <Grid MaxWidth="1200" Height="400">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.1*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="MEMBER MANAGEMENT" Style="{StaticResource SectionLabelStyle}" Margin="0,0,0,12" />
+                            <Button Content="Register New Member" Tag="Register New Member" Style="{StaticResource DashboardActionButtonStyle}" Click="ServiceButton_Click" />
+                            <Button Content="Search Member" Tag="Search Member" Style="{StaticResource DashboardActionButtonStyle}" Click="ServiceButton_Click" />
+                            <Button Content="View Member Savings" Tag="View Member Savings" Style="{StaticResource DashboardActionButtonStyle}" Click="ServiceButton_Click" />
+                            <Button Content="Update Member Information" Tag="Update Member Information" Style="{StaticResource DashboardActionButtonStyle}" Click="ServiceButton_Click" />
+                            <Border Background="{StaticResource SaccoSkyBrush}" Height="8" Margin="0,18,110,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </HubSection>
 
-                            <Border Grid.Column="0" Background="White" CornerRadius="10" Padding="28" Margin="0,0,16,0">
+                <HubSection Header="LOAN SERVICES" Width="285" IsHeaderInteractive="False">
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="LOAN MANAGEMENT" Style="{StaticResource SectionLabelStyle}" Margin="0,0,0,12" />
+                            <Button Content="New Loan Application" Tag="New Loan Application" Style="{StaticResource DashboardActionButtonStyle}" Click="ServiceButton_Click" />
+                            <Button Content="Approved Loans" Tag="Approved Loans" Style="{StaticResource DashboardActionButtonStyle}" Click="ServiceButton_Click" />
+                            <Button Content="Pending Loans" Tag="Pending Loans" Style="{StaticResource DashboardActionButtonStyle}" Click="ServiceButton_Click" />
+                            <Button Content="Loan Repayments" Tag="Loan Repayments" Style="{StaticResource DashboardActionButtonStyle}" Click="ServiceButton_Click" />
+                            <Border Background="{StaticResource SaccoGoldBrush}" Height="8" Margin="0,18,110,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </HubSection>
+
+                <HubSection Header="REPORTS" Width="285" IsHeaderInteractive="False">
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="SACCO REPORTS" Style="{StaticResource SectionLabelStyle}" Margin="0,0,0,12" />
+                            <Button Content="Daily Collection" Tag="Daily Collection" Style="{StaticResource DashboardActionButtonStyle}" Click="ReportButton_Click" />
+                            <Button Content="Monthly Savings" Tag="Monthly Savings" Style="{StaticResource DashboardActionButtonStyle}" Click="ReportButton_Click" />
+                            <Button Content="Loan Repayment Report" Tag="Loan Repayment Report" Style="{StaticResource DashboardActionButtonStyle}" Click="ReportButton_Click" />
+                            <Button Content="Member Registration Report" Tag="Member Registration Report" Style="{StaticResource DashboardActionButtonStyle}" Click="ReportButton_Click" />
+                            <Border Background="{StaticResource SaccoRedBrush}" Height="8" Margin="0,18,110,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </HubSection>
+
+                <HubSection Header="SACCO INFORMATION" Width="520" IsHeaderInteractive="False">
+                    <DataTemplate>
+                        <Grid Height="360">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.15*" />
+                                <ColumnDefinition Width="0.85*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="White" BorderBrush="{StaticResource LineBrush}" BorderThickness="1" Padding="24" Margin="0,0,12,0">
                                 <StackPanel>
-                                    <TextBlock Text="UNITY SACCO" FontSize="28" FontWeight="Bold" Foreground="#123B63" />
-                                    <TextBlock Text="Savings and Credit Cooperative Society" FontSize="15" Foreground="#647482" Margin="0,5,0,25" />
-                                    <TextBlock Text="Our purpose" FontSize="18" FontWeight="SemiBold" Foreground="#172B3A" />
-                                    <TextBlock Text="We provide accessible savings, financial services, and member support while promoting responsible financial management." TextWrapping="Wrap" FontSize="15" Foreground="#52616D" Margin="0,8,0,20" />
-                                    <TextBlock Text="Office hours: Monday to Friday, 8:00 AM to 5:00 PM" FontSize="14" Foreground="#52616D" />
-                                    <TextBlock Text="Email: info@unitysacco.example" FontSize="14" Foreground="#52616D" Margin="0,8,0,0" />
+                                    <TextBlock Text="KAMPALA COMMUNITY SACCO" FontSize="23" FontWeight="Bold" Foreground="{StaticResource SaccoBlueBrush}" TextWrapping="Wrap" />
+                                    <TextBlock Text="Savings and Credit Cooperative Society" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,5,0,22" />
+                                    <Rectangle Height="6" Width="76" Fill="{StaticResource SaccoGoldBrush}" HorizontalAlignment="Left" />
+                                    <TextBlock Text="Member-focused savings, credit and financial services managed by authorised SACCO staff." TextWrapping="Wrap" FontSize="13" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,20,0,18" />
+                                    <TextBlock Text="Office hours: Monday to Friday, 8:00 AM to 5:00 PM" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" TextWrapping="Wrap" />
                                 </StackPanel>
                             </Border>
-
-                            <Border Grid.Column="1" Background="#123B63" CornerRadius="10" Padding="20">
+                            <Border Grid.Column="1" Background="{StaticResource SaccoBlueDarkBrush}" Padding="18">
                                 <Canvas>
-                                    <TextBlock Canvas.Left="25" Canvas.Top="25" Text="MEMBER GROWTH" Foreground="White" FontSize="18" FontWeight="SemiBold" />
-                                    <Line X1="35" Y1="310" X2="410" Y2="310" Stroke="White" StrokeThickness="1" Opacity="0.5" />
-                                    <Line X1="35" Y1="70" X2="35" Y2="310" Stroke="White" StrokeThickness="1" Opacity="0.5" />
-                                    <Polyline Points="45,275 105,250 165,260 225,205 285,180 345,125 405,90" Stroke="#F2B233" StrokeThickness="5" />
-                                    <Ellipse Canvas.Left="400" Canvas.Top="85" Width="10" Height="10" Fill="#F2B233" />
-                                    <TextBlock Canvas.Left="42" Canvas.Top="320" Text="Jan" Foreground="White" FontSize="11" />
-                                    <TextBlock Canvas.Left="160" Canvas.Top="320" Text="Mar" Foreground="White" FontSize="11" />
-                                    <TextBlock Canvas.Left="278" Canvas.Top="320" Text="May" Foreground="White" FontSize="11" />
-                                    <TextBlock Canvas.Left="395" Canvas.Top="320" Text="Jul" Foreground="White" FontSize="11" />
+                                    <Ellipse Width="88" Height="88" Fill="{StaticResource SaccoGoldBrush}" Canvas.Left="15" Canvas.Top="22" />
+                                    <Rectangle Width="88" Height="88" Fill="{StaticResource SaccoSkyBrush}" Canvas.Left="68" Canvas.Top="74" />
+                                    <Rectangle Width="24" Height="155" Fill="{StaticResource SaccoRedBrush}" Canvas.Left="134" Canvas.Top="16" />
+                                    <Line X1="20" Y1="208" X2="170" Y2="208" Stroke="White" StrokeThickness="4" />
+                                    <TextBlock Text="STRUCTURE" Foreground="White" FontSize="11" FontWeight="SemiBold" CharacterSpacing="100" Canvas.Left="20" Canvas.Top="230" />
                                 </Canvas>
                             </Border>
                         </Grid>
