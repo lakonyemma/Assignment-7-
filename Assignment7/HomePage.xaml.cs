@@ -1,3 +1,4 @@
+using System;
 using Assignment7.Models;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -66,7 +67,7 @@ namespace Assignment7
         private async System.Threading.Tasks.Task ShowMessageAsync(string title, string message)
         {
             var dialog = new MessageDialog(message, title);
-            await dialog.ShowAsync();
+            await dialog.ShowAsync().AsTask();
         }
     }
 }
